@@ -71,14 +71,15 @@ const menu = [
             click: () => app.quit(),
         }, ],
     },
-    ...(!isMac ? [{
-        label: 'Help',
-        submenu: [{
+    ...(!isMac ?
+        [{
             label: 'Help',
-            accelerator: 'CmdOrCtrl+H',
-            click: createAboutWindow,
-        }, ],
-    }, ] : []),
+            submenu: [{
+                label: 'Help',
+                accelerator: 'CmdOrCtrl+H',
+                click: createAboutWindow,
+            }, ],
+        }, ] : []),
     ...(isDev ? [{
         label: "Developer",
         submenu: [{
