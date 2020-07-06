@@ -4,7 +4,7 @@ This application was built using HTML, CSS (Materialize Framework), and JavaScri
 
 ## Description
 
-Image shrink is an application where you upload an image, choose the quality of, and optimize the image with that requested size. Resizing the image will reduce the data of the image without losing significant quality.
+Image shrink is an application where you upload an image, choose the quality, and optimize the image with that requested size. Resizing the image will reduce the data of the image without losing significant quality.
 
 ## Usage
 
