@@ -29,8 +29,12 @@ npm run package-linux
 
 #### Windows
 
-ctrl + w: Exit Application
+Ctrl + w: Exit Application
+Ctrl + R: Reload Application
+Ctrl + Shift + I: Open Developer Tools (Developer Use ONLY)
 
 #### Macintosh
 
-command + w: Exit Application
+Command + w: Exit Application
+Command + R: Reload Application
+Command + Alt + I: Open Developer Tools (Developer Use ONLY)
