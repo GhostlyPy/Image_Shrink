@@ -72,9 +72,9 @@ const menu = [
         }, ],
     },
     ...(!isMac ? [{
-        label: 'Help',
+        label: 'About',
         submenu: [{
-            label: 'Help',
+            label: 'About',
             accelerator: 'CmdOrCtrl+H',
             click: createAboutWindow,
         }, ],
