@@ -4,7 +4,7 @@ This application was built using HTML, CSS (Materialize Framework), and JavaScri
 
 ## Description
 
-Image shrink is an application where you upload an image, choose the quality of that image, and export the image with that requested size. Resizing the image will reduce the size of the image without losing an extensive amount of quality.
+Image shrink is an application where you upload an image, choose the quality of, and optimize the image with that requested size. Resizing the image will reduce the data of the image without losing significant quality.
 
 ## Usage
 
@@ -33,7 +33,7 @@ Ctrl + w: Exit Application
 Ctrl + R: Reload Application
 Ctrl + Shift + I: Open Developer Tools (Developer Use ONLY)
 Ctrl + Shift + R: Force Reload (Developer Use ONLY)
-Ctrl + H: Opens Help Menu
+Ctrl + H: Opens About Menu
 
 #### Macintosh
 
