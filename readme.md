@@ -42,3 +42,7 @@ Command + R: Reload Application
 Command + Alt + I: Open Developer Tools (Developer Use ONLY)
 Command + Alt + R: Force Reload (Developer Use ONLY)
 Command + H: Opens About Menu
+
+### Error Logs
+
+%USERPROFILE%\AppData\Roaming\{app name}\logs\{process type}.log
