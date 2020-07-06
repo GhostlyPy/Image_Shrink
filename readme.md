@@ -24,3 +24,13 @@ npm run package-mac
 npm run package-win
 
 npm run package-linux
+
+### Shortcuts
+
+#### Windows
+
+ctrl + w: Exit Application
+
+#### Macintosh
+
+command + w: Exit Application
