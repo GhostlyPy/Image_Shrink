@@ -1,7 +1,7 @@
 {
   "name": "image_shrink",
   "productName": "Image Shrink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Image shrink is an application where you upload an image, choose the quality of that image, and export the image with that requested size. Resizing the image will reduce the size of the image without losing an extensive amount of quality.",
   "main": "main.js",
   "scripts": {
