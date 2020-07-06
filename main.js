@@ -53,7 +53,7 @@ function createAboutWindow() {
         icon: `${__dirname}/assets/icons/Icon_256x256.png`,
         resizable: false,
         backgroundColor: "white",
-    });
+    })
 
     // Links the HTML file to the JS file so that the application will have displayed content
     aboutWindow.loadURL(`file://${__dirname}/app/about.html`)
@@ -68,7 +68,7 @@ app.on("ready", () => {
     Menu.setApplicationMenu(mainMenu)
 
     mainWindow.on("closed", () => (mainWindow = null))
-});
+})
 
 const menu = [
     ...(isMac ? [{
@@ -153,7 +153,7 @@ app.on("window-all-closed", () => {
     if (!isMac) {
         app.quit()
     }
-});
+})
 
 app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
