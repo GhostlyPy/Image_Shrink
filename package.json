@@ -4,11 +4,13 @@
   "description": "Image shrink is an application where you upload an image, choose the quality of that image, and export the image with that requested size. Resizing the image will reduce the size of the image without losing an extensive amount of quality.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "nodemon --exec electron ."
   },
   "author": "Trevor Borden",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.0.5"
+    "electron": "^9.0.5",
+    "nodemon": "^2.0.4"
   }
 }
