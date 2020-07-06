@@ -19,12 +19,19 @@ let aboutWindow;
 function createMainWindow() {
     mainWindow = new BrowserWindow({
         title: "Image Shrink",
-        width: 500,
+        width: isDev ? 1000 : 500,
         height: 600,
         icon: `${__dirname}/assets/icons/Icon_256x256.png`,
         resizable: isDev ? true : false,
         backgroundColor: "white",
+        webPreferences: {
+            nodeIntegration: true,
+        },
     });
+
+    if (isDev) {
+        mainWindow.webContents.openDevTools()
+    };
 
     // Links the HTML file to the JS file so that the application will have displayed content
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
