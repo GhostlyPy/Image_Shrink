@@ -4,16 +4,11 @@
   "description": "Image shrink is an application where you upload an image, choose the quality of that image, and export the image with that requested size. Resizing the image will reduce the size of the image without losing an extensive amount of quality.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GhostlyPy/Image_Shrink.git"
+    "start": "electron ."
   },
   "author": "Trevor Borden",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GhostlyPy/Image_Shrink/issues"
-  },
-  "homepage": "https://github.com/GhostlyPy/Image_Shrink#readme"
+  "devDependencies": {
+    "electron": "^9.0.5"
+  }
 }
