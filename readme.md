@@ -15,6 +15,7 @@ npm install
 ### Run
 
 npm start
+
 npm run dev (with Nodemon)
 
 ### Package
@@ -30,17 +31,25 @@ npm run package-linux
 #### Windows
 
 Ctrl + w: Exit Application
+
 Ctrl + R: Reload Application
+
 Ctrl + Shift + I: Open Developer Tools (Developer Use ONLY)
+
 Ctrl + Shift + R: Force Reload (Developer Use ONLY)
+
 Ctrl + H: Opens About Menu
 
 #### Macintosh
 
 Command + w: Exit Application
+
 Command + R: Reload Application
+
 Command + Alt + I: Open Developer Tools (Developer Use ONLY)
+
 Command + Alt + R: Force Reload (Developer Use ONLY)
+
 Command + H: Opens About Menu
 
 ### Error Logs
