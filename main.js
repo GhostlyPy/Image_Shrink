@@ -1,19 +1,27 @@
+const path = require("path")
+const os = require("os")
 const {
     app,
     BrowserWindow,
-    Menu
-} = require("electron");
+    Menu,
+    ipcMain,
+    shell
+} = require("electron")
+const imagemin = require("imagemin")
+const imageminMozjpeg = require("imagemin-mozjpeg")
+const imageminPngquant = require("imagemin-pngquant")
+const slash = require('slash')
 
 // Sets Environment
-process.env.NODE_ENV = "development";
+process.env.NODE_ENV = "development"
 
 // Checks to see if the environment is set to Development or Production
-const isDev = process.env.NODE_ENV !== "production" ? true : false;
-const isMac = process.platform === "darwin" ? true : false;
+const isDev = process.env.NODE_ENV !== "production" ? true : false
+const isMac = process.platform === "darwin" ? true : false
 
 // Defines the main application window
-let mainWindow;
-let aboutWindow;
+let mainWindow
+let aboutWindow
 
 // Creates the main application window that will be opened during execution
 function createMainWindow() {
@@ -27,16 +35,16 @@ function createMainWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
-    });
+    })
 
     if (isDev) {
         mainWindow.webContents.openDevTools()
-    };
+    }
 
     // Links the HTML file to the JS file so that the application will have displayed content
-    mainWindow.loadURL(`file://${__dirname}/app/index.html`);
+    mainWindow.loadURL(`file://${__dirname}/app/index.html`)
 }
-
+// Creates a window that displays who created the application + the version of the application
 function createAboutWindow() {
     aboutWindow = new BrowserWindow({
         title: "About Image Shrink",
@@ -48,18 +56,18 @@ function createAboutWindow() {
     });
 
     // Links the HTML file to the JS file so that the application will have displayed content
-    aboutWindow.loadURL(`file://${__dirname}/app/about.html`);
+    aboutWindow.loadURL(`file://${__dirname}/app/about.html`)
 }
 
 // Opens/Creates the window that displays the application
 app.on("ready", () => {
-    createMainWindow();
+    createMainWindow()
 
     // Used to customize the applications shortcuts & menu items
-    const mainMenu = Menu.buildFromTemplate(menu);
-    Menu.setApplicationMenu(mainMenu);
+    const mainMenu = Menu.buildFromTemplate(menu)
+    Menu.setApplicationMenu(mainMenu)
 
-    mainWindow.on("closed", () => (mainWindow = null));
+    mainWindow.on("closed", () => (mainWindow = null))
 });
 
 const menu = [
@@ -79,10 +87,10 @@ const menu = [
         }, ],
     },
     ...(!isMac ? [{
-        label: 'About',
+        label: "About",
         submenu: [{
-            label: 'About',
-            accelerator: 'CmdOrCtrl+H',
+            label: "About",
+            accelerator: "CmdOrCtrl+H",
             click: createAboutWindow,
         }, ],
     }, ] : []),
@@ -102,14 +110,48 @@ const menu = [
             },
         ],
     }, ] : []),
-];
+]
+
+ipcMain.on("image:minimize", (e, options) => {
+    options.dest = path.join(os.homedir(), 'imageshrink')
+    shrinkImage(options)
+    console.log(options)
+})
+
+async function shrinkImage({
+    imgPath,
+    quality,
+    dest
+}) {
+    try {
+        const pngQuality = quality / 100
+        const files = await imagemin([slash(imgPath)], {
+            destination: dest,
+            plugins: [
+                imageminMozjpeg({
+                    quality
+                }),
+                imageminPngquant({
+                    quality: [pngQuality, pngQuality],
+                }),
+            ],
+        })
+
+        console.log(files)
+
+        shell.openPath(dest)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on("window-all-closed", () => {
     if (!isMac) {
-        app.quit();
+        app.quit()
     }
 });
 
@@ -117,6 +159,6 @@ app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
-        createMainWindow();
+        createMainWindow()
     }
-});
+})
