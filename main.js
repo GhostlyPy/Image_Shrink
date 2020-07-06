@@ -6,6 +6,7 @@ process.env.NODE_ENV = "development";
 // Checks to see if the environment is set to Development or Production
 const isDev = process.env.NODE_ENV !== "production" ? true : false;
 const isWin = process.platform === "win32" ? true : false;
+const isMac = process.platform === "darwin" ? true : false;
 
 // Defines the main application window
 let mainWindow;
@@ -31,7 +32,7 @@ app.on("ready", createMainWindow);
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+  if (!isMac) {
     app.quit();
   }
 });
@@ -40,6 +41,6 @@ app.on("activate", () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    createMainWindow();
   }
 });
