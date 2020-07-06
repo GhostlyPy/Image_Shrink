@@ -11,6 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^9.0.5",
+    "electron-packager": "^15.0.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
