@@ -19,6 +19,7 @@ function createMainWindow() {
     height: 600,
     icon: `${__dirname}/assets/icons/Icon_256x256.png`,
     resizable: isDev ? true : false,
+    backgroundColor: "white",
   });
 
   // Links the HTML file to the JS file so that the application will have displayed content
