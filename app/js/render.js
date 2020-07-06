@@ -1,26 +1,35 @@
-const path = require('path');
-const os = require('os');
-const {
-    ipcRenderer
-} = require('electron')
+const path = require("path");
+const os = require("os");
+const { ipcRenderer } = require("electron");
 
 // Retrieves the form image, slider, and image identifers
-const form = document.getElementById('image-form');
-const slider = document.getElementById('slider');
-const img = document.getElementById('img');
+const form = document.getElementById("image-form");
+const slider = document.getElementById("slider");
+const img = document.getElementById("img");
 
 // Outputs the path of the applications home directory
-document.getElementById('output-path').innerText = path.join(os.homedir(), 'imageshrink');
+document.getElementById("output-path").innerText = path.join(
+  os.homedir(),
+  "imageshrink"
+);
 
 // onSubmit
-form.addEventListener('submit', e => {
-    e.preventDefault()
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const imgPath = img.files[0].path;
-    const quality = slider.value;
+  const imgPath = img.files[0].path;
+  const quality = slider.value;
 
-    ipcRenderer.send('image:minimize', {
-        imgPath,
-        quality,
-    })
+  ipcRenderer.send("image:minimize", {
+    imgPath,
+    quality,
+  });
+});
+
+// On done
+// Displays the percentage and quality the image was resized too
+ipcRenderer.on("image:done", () => {
+  M.toast({
+    html: `Image resized to ${slider.value}% quality`,
+  });
 });
