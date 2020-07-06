@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 
 // Sets Environment
 process.env.NODE_ENV = "development";
@@ -26,7 +26,28 @@ function createMainWindow() {
 }
 
 // Opens/Creates the window that displays the application
-app.on("ready", createMainWindow);
+app.on("ready", () => {
+  createMainWindow();
+
+  const mainMenu = Menu.buildFromTemplate(menu);
+  Menu.setApplicationMenu(mainMenu);
+
+  mainWindow.on("closed", () => (mainWindow = null));
+});
+
+const menu = [
+  ...(isMac ? [{ role: "appMenu" }] : []),
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Quit",
+        accelerator: isMac ? "Command+w" : "ctrl+W",
+        click: () => app.quit(),
+      },
+    ],
+  },
+];
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
