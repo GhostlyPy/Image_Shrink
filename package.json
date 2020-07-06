@@ -1,11 +1,15 @@
 {
   "name": "image_shrink",
+  "productName": "Image Shrink",
   "version": "1.0.0",
   "description": "Image shrink is an application where you upload an image, choose the quality of that image, and export the image with that requested size. Resizing the image will reduce the size of the image without losing an extensive amount of quality.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "nodemon --exec electron ."
+    "dev": "nodemon --exec electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Image Shrink\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=false --out=release-builds"
   },
   "author": "Trevor Borden",
   "license": "MIT",
