@@ -1,6 +1,6 @@
 # Image Shrink Application
 
-This application was built using HTML, CSS (Materialize Framework), and JavaScript (Electron Framework)
+This application was built using HTML, CSS (Materialize Framework), and JavaScript (Electron Framework).
 
 ## Description
 
